@@ -1,0 +1,29 @@
+package Judgment;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+/**
+ * Servlet implementation class logout
+ */
+@WebServlet("/logout")
+public class logout extends HttpServlet {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		session.removeAttribute("userId"); // セッションを無効にする
+		session.removeAttribute("savedlist"); // セッションを無効にする
+        System.out.println("ログアウト成功"); // ログ出力を追加
+        response.sendRedirect("home.jsp"); // ログアウト後にホームページにリダイレクト
+    }
+}
+
+
+
+
+
